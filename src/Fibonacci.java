@@ -1,6 +1,5 @@
 /**
  * Fibonacci series
- *
  * To get a Fibonacci series for a given number
  *
  * @author Vinod John
