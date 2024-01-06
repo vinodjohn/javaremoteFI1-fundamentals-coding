@@ -1,5 +1,7 @@
 import author.poem.Author;
 import author.poem.Poem;
+import shopping.Product;
+import shopping.ShoppingCart;
 
 import java.util.Scanner;
 
@@ -96,6 +98,28 @@ public class Main {
             }
         }
 
+
+        // Grocery shopping
+        // Get product from the USER as input
+        Product product = new Product();
+        product.setName("Apple");
+        product.setPrice(3.45f);
+
+        // Add products to array
+        Product[] products = {product};
+        float totalPrice = calculateTotalPrice(products);
+
+        // if index will be greater than 5 – finish shopping,
+
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setProducts(products);
+        shoppingCart.setTotalPrice(totalPrice);
+
+        //Ask user to pay: provide options like card, bank transfer, cash
+        shoppingCart.setPaid(false);
+
+        // Print the shopping cart
     }
 
     private static Author getBestAuthor(Poem[] poems) {
@@ -108,5 +132,10 @@ public class Main {
         }
 
         return poems[counter].getCreator();
+    }
+
+    private static float calculateTotalPrice(Product[] products) {
+        //TODO
+        return 0;
     }
 }
