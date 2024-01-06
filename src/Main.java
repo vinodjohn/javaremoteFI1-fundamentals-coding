@@ -24,14 +24,14 @@ public class Main {
         new CircleArea(45.5d);
 
         // Task-4
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
         System.out.println("Enter an integer:");
-        int input = scanner.nextInt();
+        int input = scanner1.nextInt();
         new FizzBuzz(input);
 
         // Fibonacci series
         System.out.println("\n\nFibonacci Series: \nEnter an Integer:");
-        int inputF = scanner.nextInt();
+        int inputF = scanner1.nextInt();
         Fibonacci fibonacci = new Fibonacci();
         fibonacci.printFibonacciSeries(inputF);
 
@@ -105,21 +105,86 @@ public class Main {
         product.setName("Apple");
         product.setPrice(3.45f);
 
-        // Add products to array
-        Product[] products = {product};
+        Product product1 = new Product();
+        product1.setName("Chips");
+        product1.setPrice(2.453f);
+
+        Product product2 = new Product();
+        product2.setName("Milk");
+        product2.setPrice(1f);
+
+        Product product3 = new Product();
+        product3.setName("Yogurt");
+        product3.setPrice(0.45f);
+
+        Product product4 = new Product();
+        product4.setName("Egg");
+        product4.setPrice(1.45f);
+
+        Product product5 = new Product();
+        product5.setName("Carrot");
+        product5.setPrice(2f);
+
+        Product product6 = new Product();
+        product6.setName("Cake");
+        product6.setPrice(13.35f);
+
+        Product[] productsMenu  = {product, product1, product2, product3, product4, product5, product6};
+
+        System.out.println("Welcome to Shopping");
+        System.out.println("Choose products from the below list:");
+
+        // Listing product
+        for (int i = 0; i < productsMenu.length; i++) {
+            System.out.println(i + ". " + productsMenu[i].getName() + ": " + productsMenu[i].getPrice() +" EUR");
+        }
+
+        boolean toAddMore;
+        Product[] products = new Product[50];
+        int counter = 0;
+        Scanner scanner2 = new Scanner(System.in);
+
+        do {
+            System.out.println("Enter a product number:");
+            int productOption = scanner2.nextInt();
+            System.out.println("Enter quantity:");
+            int productQuantity = scanner2.nextInt();
+
+            Product choosenProduct = productsMenu[productOption];
+            choosenProduct.setQuantity(productQuantity);
+            products[counter] = choosenProduct;
+
+            System.out.println("Do you want to add more? True or False");
+            toAddMore = scanner2.nextBoolean();
+            counter++;
+        } while (toAddMore);
+
+
         float totalPrice = calculateTotalPrice(products);
-
-        // if index will be greater than 5 – finish shopping,
-
 
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setProducts(products);
         shoppingCart.setTotalPrice(totalPrice);
 
         //Ask user to pay: provide options like card, bank transfer, cash
-        shoppingCart.setPaid(false);
+        System.out.println("\nShopping cart:");
 
-        // Print the shopping cart
+        Product[] shoppingCartProducts = shoppingCart.getProducts();
+
+        for (int i = 0; i < shoppingCartProducts.length; i++) {
+            Product p = shoppingCartProducts[i];
+
+            if (p != null) {
+                System.out.println((i + 1) + ". " + p.getName() + ": " + p.getQuantity());
+            }
+        }
+
+        System.out.println("Grant total: " +  shoppingCart.getTotalPrice() + " EUR");
+        System.out.println("How would you like to pay? \n1. Cash \n2. Card\n3. Bank transfer");
+        int paymentOption = scanner2.nextInt();
+        shoppingCart.setPaid(true);
+        System.out.println("\nPayment Successful!");
+        System.out.println("\nThank you for shopping!");
     }
 
     private static Author getBestAuthor(Poem[] poems) {
@@ -135,7 +200,14 @@ public class Main {
     }
 
     private static float calculateTotalPrice(Product[] products) {
-        //TODO
-        return 0;
+        float totalPrice = 0;
+
+        for (Product product: products) {
+            if (product != null) {
+                totalPrice = totalPrice + (product.getQuantity() * product.getPrice());
+            }
+        }
+
+        return totalPrice;
     }
 }

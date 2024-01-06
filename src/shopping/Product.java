@@ -6,9 +6,8 @@ package shopping;
  */
 public class Product {
     private String name;
-    private float price;  // price per unit
-
-    // quantity
+    private float price;
+    private int quantity;
 
     public String getName() {
         return name;
@@ -24,5 +23,13 @@ public class Product {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
