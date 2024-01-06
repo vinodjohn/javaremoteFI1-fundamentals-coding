@@ -83,6 +83,19 @@ public class Main {
 
         System.out.println("Second largest value in array is: " + secondMax);
 
+        // Find duplicate elements in the array
+        Integer[] arr = {3, 4, 6, 7, 3, 2, 7, 3};
+
+        System.out.println("The duplicate values are: ");
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if ((arr[i].equals(arr[j])) && (i != j)) {
+                    System.out.println(arr[j] + " ");
+                }
+            }
+        }
+
     }
 
     private static Author getBestAuthor(Poem[] poems) {
