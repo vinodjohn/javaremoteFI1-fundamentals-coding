@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
+
         // Task-1
         Perimeter perimeter = new Perimeter();
         double resultPerimeter = perimeter.calculatePerimeter(6.234f);
@@ -60,6 +61,28 @@ public class Main {
         Poem[] poems = {poem, poem1, poem2};
         Author bestAuthor = getBestAuthor(poems);
         System.out.printf("\n%s has written the longest poem!", bestAuthor.getSurname());
+
+
+        // Task: Print Second Largest Value in the array.
+        Integer[] intArray = {34, 23, 48, 21, 37, 96, 32};
+
+        int max = 0;
+        int secondMax = 0;
+
+        for (Integer i: intArray) {
+           if (i > max) {
+               secondMax = max;
+               max = i;
+
+           }
+
+           if (i > secondMax && i < max) {
+               secondMax = i;
+           }
+        }
+
+        System.out.println("Second largest value in array is: " + secondMax);
+
     }
 
     private static Author getBestAuthor(Poem[] poems) {
